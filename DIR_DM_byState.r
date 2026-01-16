@@ -2,7 +2,7 @@
 # This script joins data from the Drought Impact Reporter (go.unl.edu/DIRdash) and the U.S. Drought Monitor (droughtmonitor.unl.edu) to list impacts that have occurred in each state at each level of drought: https://droughtmonitor.unl.edu/DmData/StateImpacts.aspx
 # Through Nov. 20, 2025. 
 # The DIR data through Nov. 20, 2025, is available via SANDY -- ADD LINK. 
-# USDM data used for this analysis is uploaded to Github. It's from https://droughtmonitor.unl.edu/DmData/DataDownload/ComprehensiveStatistics.aspx
+# USDM data used for this analysis is from https://droughtmonitor.unl.edu/DmData/DataDownload/ComprehensiveStatistics.aspx
 # and https://droughtmonitor.unl.edu/DmData/OCONUSDroughtStatus.aspx
 
 library(dplyr)
@@ -12,7 +12,7 @@ library(data.table)
 library(tidyr)
 
 # read in impacts
-DIRdata <- read.csv("data/Drought_Impact_Reporter_data_2005_2025/Drought_Impact_Reporter_data_2005_2025.csv", stringsAsFactors = FALSE) # 151450
+DIRdata <- read.csv("data/Drought_Impact_Reporter_data_2005_2025.csv", stringsAsFactors = FALSE) # 151450
 
 # convert from character to date format
 DIRdata$Start_Date <- parse_date_time(DIRdata$Start_Date, "mdy")
@@ -298,6 +298,7 @@ all$State_FIPS <- as.character(str_pad(all$State_FIPS, 2, "left", "0"))
 # library(writexl)
 
 # write_xlsx(all, "output/all_thru_20251120.slsx")
+
 
 
 
